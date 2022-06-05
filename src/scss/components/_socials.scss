@@ -1,0 +1,43 @@
+.socials {
+  &__link {
+    display: inline-block;
+    width: rem(19);
+    height: rem(19);
+    outline: none;
+  }
+
+  &__icon {
+    width: 100%;
+    height: 100%;
+    fill: var(--color-black);
+
+    transition-duration: $transitionDuration;
+    transition-property: fill;
+  }
+
+  &_row {
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
+
+@include mouse-device {
+  .socials__link {
+    &:hover,
+    &:focus {
+      .socials__icon {
+        fill: var(--color-green);
+      }
+    }
+  }
+}
+
+@include touch-device {
+  .socials__link {
+    &:active {
+      .socials__icon {
+        fill: var(--color-green);
+      }
+    }
+  }
+}

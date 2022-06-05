@@ -7,10 +7,11 @@ html {
 *::before,
 *::after {
   box-sizing: border-box;
-  font-family: "OpenSans";
+  font-family: "Montserrat";
 }
 
 body {
+  height: 100%;
   padding: 0;
   margin: 0;
   background-color: #fff;
@@ -23,9 +24,9 @@ img {
 }
 
 .container {
-  max-width: rem(1310);
+  max-width: rem(1248);
   margin: 0 auto;
-  padding: 0 rem(15);
+  padding: 0 rem(24);
 }
 
 a {
