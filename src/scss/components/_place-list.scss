@@ -1,0 +1,29 @@
+.place-list {
+  &__item {
+    position: relative;
+    padding-left: rem(10);
+    &::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      transform: translateY(-100%);
+      left: 0;
+      width: rem(2);
+      height: rem(2);
+      border-radius: 100%;
+      background-color: black;
+    }
+
+    &:not(:last-child) {
+      margin-bottom: rem(8);
+    }
+  }
+
+  &__text {
+    margin: 0;
+    font-size: rem(18);
+    font-weight: 300;
+    line-height: lh(22, 18);
+    color: var(--color-black);
+  }
+}

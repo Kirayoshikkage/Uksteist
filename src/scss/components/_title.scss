@@ -1,0 +1,12 @@
+.title {
+  font-size: rem(64);
+  color: var(--color-black);
+  margin: 0;
+  line-height: lh(57.6, 64);
+  letter-spacing: rem(0.07);
+  font-weight: 400;
+
+  &_color-white {
+    color: white;
+  }
+}

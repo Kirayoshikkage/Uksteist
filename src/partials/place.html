@@ -1,3 +1,56 @@
 <section class="place">
-  <div class="container"></div>
+  <div class="container">
+    <h2 class="title place__title">Место для вашего дома:</h2>
+    <div class="place__grid">
+      <div class="place__item">
+        <picture>
+          <source
+            media="(min-width:768px)"
+            srcset="img/place__img_desctop.avif"
+            type="image/avif"
+          />
+          <source
+            media="(min-width:768px)"
+            srcset="img/place__img_desctop.webp"
+            type="image/webp"
+          />
+          <source
+            media="(max-width:767.98px)"
+            srcset="img/place__img_mobile.avif"
+            type="image/avif"
+          />
+          <source
+            media="(max-width:767.98px)"
+            srcset="img/place__img_mobile.webp"
+            type="image/webp"
+          />
+          <img
+            loading="lazy"
+            src="img/place__img_desctop.webp"
+            alt="Лес с дорогой"
+            class="place__img"
+          />
+        </picture>
+      </div>
+      <div class="place__item">
+        <ul class="list-reset place-list place__place-list">
+          <li class="place-list__item">
+            <p class="place-list__text">Возможно здесь вы построите свой дом</p>
+          </li>
+          <li class="place-list__item">
+            <p class="place-list__text">В окружении заповедного леса</p>
+          </li>
+          <li class="place-list__item">
+            <p class="place-list__text">В тихом и спокойном месте</p>
+          </li>
+          <li class="place-list__item">
+            <p class="place-list__text">В 22 минутах от Таллинна</p>
+          </li>
+          <li class="place-list__item">
+            <p class="place-list__text">В 311 метрах от моря</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
 </section>
