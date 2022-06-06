@@ -52,7 +52,8 @@
   }
 }
 
-@media (max-width: 575.98px), (min-width: 576px) and (orientation: landscape) {
+@media (max-width: 575.98px),
+  (orientation: landscape) and (max-width: 1023.98px) {
   .place {
     flex-direction: column;
 
