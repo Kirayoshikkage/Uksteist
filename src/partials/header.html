@@ -32,19 +32,32 @@
         aria-label="Выпадающее меню с выбором языка"
         role="listbox"
         class="select select-lang header__select-lang"
+        data-test="select-lang"
       >
-        <button type="button" class="btn-reset select__trigger">
-          <span class="select__current-item"></span>
+        <button
+          data-test="select-lang-trigger"
+          type="button"
+          class="btn-reset select__trigger"
+        >
+          <span
+            data-test="select-lang-current-item"
+            class="select__current-item"
+          ></span>
           <svg class="select__icon">
             <use xlink:href="img/sprite.svg#select-icon"></use>
           </svg>
         </button>
-        <div class="select__body">
+        <div data-test="select-lang-body" class="select__body">
           <div class="select__content">
             <button data-key="ru" type="button" class="btn-reset select__item">
               Ru
             </button>
-            <button data-key="ua" type="button" class="btn-reset select__item">
+            <button
+              data-test="select-lang-item"
+              data-key="ua"
+              type="button"
+              class="btn-reset select__item"
+            >
               Ua
             </button>
           </div>
