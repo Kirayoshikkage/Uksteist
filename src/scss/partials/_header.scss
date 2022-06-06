@@ -49,6 +49,18 @@
   }
 }
 
+@include small-tablet {
+  .header {
+    .main-menu {
+      max-width: 80%;
+    }
+
+    .main-menu__list {
+      justify-content: center;
+    }
+  }
+}
+
 @include mobile {
   .container {
     padding-left: rem(35);

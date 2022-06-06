@@ -1,0 +1,31 @@
+.button {
+  border-radius: rem(30);
+  color: var(--color-black);
+  font-weight: 300;
+  font-size: rem(18);
+  line-height: lh(16, 18);
+  letter-spacing: rem(0.07);
+  border: rem(1) solid var(--color-black);
+
+  transition-property: color, background;
+  transition-duration: $transitionDuration;
+}
+
+@include mouse-device {
+  .button {
+    &:hover,
+    &:focus {
+      background-color: var(--color-black);
+      color: white;
+    }
+  }
+}
+
+@include touch-device {
+  .button {
+    &:active {
+      background-color: var(--color-black);
+      color: white;
+    }
+  }
+}
