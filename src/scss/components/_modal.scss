@@ -1,0 +1,196 @@
+.modal {
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  background-color: rgba(51, 51, 51, 0.3);
+  z-index: 1000;
+
+  &_active {
+    .modal__content {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  &__body {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__content {
+    position: relative;
+    background-color: white;
+    transition-property: transform, opacity;
+    transition-duration: $transitionDuration;
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+
+  &__title {
+    margin: 0;
+  }
+
+  &__close {
+    top: rem(20);
+    right: rem(20);
+    width: rem(20);
+    height: rem(20);
+    position: absolute;
+    padding: rem(2);
+    z-index: 10;
+
+    transition: background $transitionDuration;
+  }
+
+  &__icon {
+    width: 100%;
+    fill: var(--color-black);
+    height: 100%;
+
+    transition-property: fill;
+    transition-duration: $transitionDuration;
+  }
+}
+
+.origins-modal {
+  overflow: auto;
+
+  .modal__content {
+    max-width: rem(784);
+    border-radius: rem(15);
+    padding: rem(48) rem(56);
+
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: rem(32);
+    grid-template-areas:
+      "verse img"
+      "quote quote";
+  }
+
+  .modal__item {
+    &:nth-child(1) {
+      grid-area: verse;
+    }
+
+    &:nth-child(2) {
+      grid-area: img;
+    }
+
+    &:nth-child(3) {
+      grid-area: quote;
+    }
+  }
+
+  .modal__img {
+    width: 100%;
+    height: 100%;
+  }
+
+  .modal__verse {
+    height: 100%;
+    margin: 0;
+    color: var(--color-black);
+    font-size: rem(13);
+    font-weight: 500;
+    line-height: lh(15, 12);
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    justify-content: space-between;
+  }
+
+  .modal__verse-paragraph {
+    max-width: rem(312);
+    display: block;
+  }
+
+  .modal__quote,
+  .modal__quote > * {
+    margin: 0;
+    padding: 0;
+  }
+
+  .modal__quote {
+    font-size: rem(12);
+    font-style: italic;
+    font-weight: 500;
+    line-height: lh(15, 12);
+    color: rgba(49, 76, 81, 1);
+  }
+}
+
+@media (max-width: 767.98px),
+  (max-width: 1023.98px) and (orientation: landscape) {
+  .origins-modal {
+    .modal__content {
+      max-width: rem(291);
+      padding: rem(50) 1rem rem(30);
+      grid-template-columns: 1fr;
+      gap: 1rem;
+      grid-template-areas:
+        "verse"
+        "quote";
+    }
+
+    .modal__item {
+      &:nth-child(2) {
+        display: none;
+      }
+    }
+
+    .modal__verse {
+      font-size: rem(11);
+      font-weight: 500;
+    }
+
+    .modal__quote {
+      font-size: rem(11);
+    }
+  }
+}
+
+@media (max-width: 767.98px) and (orientation: landscape),
+  (max-width: 1023.98px) and (orientation: landscape) {
+  .origins-modal {
+    .modal__content {
+      max-width: 100%;
+      padding: rem(30) 1rem 1rem;
+    }
+
+    .modal__verse-paragraph {
+      max-width: 100%;
+    }
+
+    .modal__close {
+      top: rem(10);
+      right: rem(10);
+    }
+  }
+}
+
+@include mouse-device {
+  .modal__close {
+    &:hover,
+    &:focus {
+      .modal__icon {
+        fill: var(--color-green);
+      }
+    }
+  }
+}
+
+@include touch-device {
+  .modal__close {
+    &:active {
+      .modal__icon {
+        fill: var(--color-green);
+      }
+    }
+  }
+}

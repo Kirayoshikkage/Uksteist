@@ -3,6 +3,7 @@ import { AnimationHeight } from "./components/AnimationHeight";
 import { BurgerMenu } from "./components/BurgerMenu";
 import { BlockFocus } from "./components/BlockFocus";
 import { FadeAnimation } from "./components/FadeAnimation";
+import { ModalWithTrigger } from "./components/Modal";
 
 let headerSelectLang = new SelectWithSingleChoice({
   selector: ".header__select-lang",
@@ -29,3 +30,19 @@ const burgerMenu = new BurgerMenu({
 });
 
 burgerMenu.init();
+
+let originsModal = new ModalWithTrigger({
+  selector: ".origins-modal",
+  openBtn: ".origins__button",
+  closeBtn: ".origins-modal .modal__close",
+  selectorActive: "modal_active",
+  apiAnimation: new FadeAnimation({
+    display: "flex",
+    duration: 400,
+  }),
+  apiBlockFocus: new BlockFocus({
+    exceptionContainer: ".origins-modal",
+  }),
+});
+
+originsModal.init();
