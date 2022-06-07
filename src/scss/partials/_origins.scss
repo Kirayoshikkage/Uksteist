@@ -1,0 +1,78 @@
+.origins {
+  min-height: 50vh;
+  display: flex;
+  align-items: center;
+  @include image-set("../img/origins__bg_desctop");
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 1rem 0;
+
+  .container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__title {
+    margin-bottom: rem(69);
+  }
+
+  &__text {
+    align-self: flex-end;
+    font-size: rem(22);
+    font-weight: 500;
+    line-height: lh(26, 22);
+    color: white;
+    max-width: rem(636);
+  }
+
+  &__button {
+    width: rem(30);
+    height: rem(30);
+  }
+
+  &__icon {
+    width: 100%;
+    height: 100%;
+    fill: white;
+
+    transition-property: fill;
+    transition-duration: $transitionDuration;
+  }
+}
+
+@include mobile {
+  .origins {
+    min-height: 100vh;
+    @include image-set("../img/origins__bg_mobile");
+
+    .container {
+      align-items: flex-start;
+    }
+
+    &__title {
+      font-size: rem(36);
+    }
+  }
+}
+
+@include mouse-device {
+  .origins__button {
+    &:hover,
+    &:focus {
+      .origins__icon {
+        fill: var(--color-green);
+      }
+    }
+  }
+}
+
+@include touch-device {
+  .origins__button {
+    &:active {
+      .origins__icon {
+        fill: var(--color-green);
+      }
+    }
+  }
+}
