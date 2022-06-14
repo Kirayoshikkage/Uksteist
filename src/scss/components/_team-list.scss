@@ -1,0 +1,35 @@
+.team-list {
+  color: #f8f8f8;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  counter-reset: counter;
+
+  &__item {
+    display: block;
+    position: relative;
+    padding-left: rem(24);
+
+    &::before {
+      counter-increment: counter;
+      content: counter(counter) ".";
+      font-size: rem(18);
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+  }
+
+  &__text {
+    font-size: rem(18);
+    font-weight: 300;
+    line-height: lh(22, 18);
+    margin: 0;
+  }
+
+  &__span {
+    font-size: rem(18);
+    font-weight: 700;
+    line-height: lh(22, 18);
+  }
+}

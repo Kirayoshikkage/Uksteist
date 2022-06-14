@@ -1,0 +1,83 @@
+.team {
+  background-color: #314c51;
+  min-height: 100vh;
+  padding: rem(141) 0;
+  background-image: url("../img/team_bg.svg");
+  background-repeat: no-repeat;
+  background-position: left 20% bottom;
+
+  &__item:nth-child(2) {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  &__title {
+    color: white;
+    margin: 0 0 rem(33);
+  }
+
+  &__desc {
+    font-size: rem(22);
+    font-weight: 500;
+    line-height: lh(26, 22);
+    color: white;
+    margin: 0 0 rem(147);
+  }
+
+  &__list {
+    display: block;
+    padding: 0;
+  }
+}
+
+@include mobile {
+  .team {
+    padding: rem(54) 0;
+
+    &__title {
+      font-size: rem(36);
+      margin: 0 0 1rem;
+    }
+
+    &__desc {
+      font-size: rem(16);
+      margin: 0 0 rem(42);
+    }
+
+    &__item {
+      justify-content: flex-start;
+    }
+
+    .team-list {
+      width: 100%;
+      &__text {
+        font-size: rem(12);
+      }
+
+      &__span {
+        margin: rem(8) 0 0;
+        padding: 0;
+        display: block;
+        font-size: 1rem;
+      }
+
+      &__item {
+        padding-left: 0;
+
+        &::before {
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+@media (orientation: landscape) and (max-width: 1023.98px) and (min-width: 768px) {
+  .team {
+    padding: 2rem 0;
+
+    &__desc {
+      margin: 0 0 2rem;
+    }
+  }
+}
