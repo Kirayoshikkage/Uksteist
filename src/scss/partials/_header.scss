@@ -19,8 +19,14 @@
   }
 
   &__phone-number {
+    display: inline-block;
     margin-left: auto;
     margin-right: rem(21.5);
+
+    .phone-number__icon {
+      width: rem(16.5);
+      height: rem(16.5);
+    }
   }
 
   &__logo {

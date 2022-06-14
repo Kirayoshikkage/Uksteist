@@ -1,0 +1,81 @@
+<section class="personal-helper">
+  <div class="container">
+    <div class="personal-helper__item">
+      <picture>
+        <source
+          srcset="img/personal-helper__img_desctop.avif"
+          type="image/avif"
+          media="(min-width:768px)"
+        />
+        <source
+          srcset="img/personal-helper__img_desctop.webp"
+          type="image/webp"
+          media="(min-width:768px)"
+        />
+        <source
+          srcset="img/personal-helper__img_mobile.avif"
+          type="image/avif"
+          media="(max-width:767.98px) and (min-width: 0px)"
+        />
+        <source
+          srcset="img/personal-helper__img_mobile.webp"
+          type="image/webp"
+          media="(max-width:767.98px) and (min-width: 0px)"
+        />
+        <img
+          loading="lazy"
+          src="img/personal-helper__img_desctop.webp"
+          alt="Девушка на фоне зимнего леса"
+          class="personal-helper__img"
+        />
+      </picture>
+    </div>
+    <div class="personal-helper__item">
+      <h2 class="personal-helper__title">
+        Ваш персональный помощник в покупке участка:
+      </h2>
+      <p class="personal-helper__name">Svetlana Davidovski</p>
+      <a
+        href="mailto:svetlana@svkinnisvara.ee "
+        class="outline-reset email personal-helper__email"
+      >
+        <svg class="email__icon">
+          <use xlink:href="img/sprite.svg#email"></use>
+        </svg>
+        <span class="email__text">svetlana@svkinnisvara.ee</span>
+      </a>
+      <a
+        href="tel:372 5813 0166"
+        class="outline-reset phone-number personal-helper__phone-number"
+      >
+        <svg class="phone-number__icon">
+          <use xlink:href="img/sprite.svg#phone"></use>
+        </svg>
+        <span class="phone-number__text"> +372 5813 0166 </span>
+      </a>
+      <ul class="list-reset socials socials_row personal-helper__socials">
+        <li class="socials__item">
+          <a aria-label="Ссылка на instagram" href="#" class="socials__link">
+            <svg class="socials__icon">
+              <use xlink:href="img/sprite.svg#inst"></use>
+            </svg>
+          </a>
+        </li>
+        <li class="socials__item">
+          <a aria-label="Ссылка на telegram" href="#" class="socials__link">
+            <svg class="socials__icon">
+              <use xlink:href="img/sprite.svg#telegram"></use>
+            </svg>
+          </a>
+        </li>
+        <li class="socials__item">
+          <a aria-label="Ссылка на whatsapp" href="#" class="socials__link">
+            <svg class="socials__icon">
+              <use xlink:href="img/sprite.svg#whatsapp"></use>
+            </svg>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>

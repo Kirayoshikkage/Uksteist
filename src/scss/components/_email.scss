@@ -1,29 +1,32 @@
-.phone-number {
+.email {
   &__icon {
-    fill: var(--color-black);
+    width: rem(10);
+    height: rem(9);
+    fill: white;
+    margin-right: 1rem;
     transition-duration: $transitionDuration;
     transition-property: fill;
   }
 
   &__text {
-    color: white;
     font-size: rem(14);
     font-weight: 500;
     line-height: lh(17, 14);
+    color: white;
     transition-duration: $transitionDuration;
     transition-property: color;
   }
 }
 
 @include mouse-device {
-  .phone-number {
+  .email {
     &:hover,
     &:focus {
-      .phone-number__icon {
+      .email__icon {
         fill: var(--color-green);
       }
 
-      .phone-number__text {
+      .email__text {
         color: var(--color-green);
       }
     }
@@ -31,13 +34,13 @@
 }
 
 @include touch-device {
-  .phone-number {
+  .email {
     &:active {
-      .phone-number__icon {
+      .email__icon {
         fill: var(--color-green);
       }
 
-      .phone-number__text {
+      .email__text {
         color: var(--color-green);
       }
     }
