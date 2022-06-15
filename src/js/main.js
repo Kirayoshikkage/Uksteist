@@ -14,7 +14,7 @@ let headerSelectLang = new SelectWithSingleChoice({
 
 headerSelectLang.init();
 
-const burgerMenu = new BurgerMenu({
+let burgerMenu = new BurgerMenu({
   selector: ".burger-menu",
   trigger: ".burger-trigger",
   selectorActive: "burger-menu_active",
@@ -32,20 +32,53 @@ const burgerMenu = new BurgerMenu({
 burgerMenu.init();
 
 let originsModal = new ModalWithTrigger({
-  selector: ".origins-modal",
-  openBtn: ".origins__button",
-  closeBtn: ".origins-modal .modal__close",
+  selector: ".origins .origins-modal",
+  openBtn: ".origins .origins__button",
+  closeBtn: ".origins .origins-modal .modal__close",
   selectorActive: "modal_active",
   apiAnimation: new FadeAnimation({
     display: "flex",
     duration: 400,
   }),
   apiBlockFocus: new BlockFocus({
-    exceptionContainer: ".origins-modal",
+    exceptionContainer: ".origins .origins-modal",
   }),
 });
 
 originsModal.init();
+
+let documentsModal = new ModalWithTrigger({
+  selector: ".documents .documents-modal",
+  openBtn: ".documents .documents__button",
+  closeBtn: ".documents .documents-modal .modal__close",
+  selectorActive: "modal_active",
+  apiAnimation: new FadeAnimation({
+    display: "flex",
+    duration: 400,
+  }),
+  apiBlockFocus: new BlockFocus({
+    exceptionContainer: ".documents .documents-modal",
+  }),
+});
+
+documentsModal.init();
+
+let documentForm = document.querySelector(".documents .modal__form");
+
+documentsModal.eventOpen((e) => {
+  let typeDocument = e.target.dataset.document;
+
+  if (!typeDocument) return;
+
+  documentForm.dataset.document = typeDocument;
+});
+
+documentForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  let formData = new FormData(e.currentTarget);
+  formData.append("document", e.target.dataset.document);
+});
 
 ymaps.ready(init);
 function init() {

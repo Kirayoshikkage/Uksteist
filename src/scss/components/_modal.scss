@@ -125,6 +125,96 @@
   }
 }
 
+.documents-modal {
+  .modal__content {
+    max-width: rem(422);
+    padding: rem(36) rem(33);
+    border-radius: rem(15);
+  }
+
+  .modal__title {
+    font-size: rem(24);
+    font-weight: 500;
+    line-height: lh(29, 24);
+    color: var(--color-black);
+    text-align: center;
+    margin: 0 0 rem(42);
+  }
+
+  .modal__input {
+    outline: none;
+    width: 100%;
+    padding: rem(16);
+    border: rem(2) solid var(--color-gray);
+    border-radius: rem(60);
+    margin: 0 0 rem(35);
+    color: var(--color-gray);
+
+    transition-duration: $transitionDuration;
+    transition-property: border-color;
+
+    &::placeholder {
+      font-size: rem(18);
+      font-weight: 300;
+      line-height: lh(22, 18);
+    }
+  }
+
+  .modal__text {
+    font-size: rem(12);
+    font-weight: 300;
+    line-height: lh(11, 12);
+    color: var(--color-gray);
+    margin: 0 0 rem(14);
+    text-align: center;
+  }
+
+  .modal__link {
+    outline: none;
+    color: inherit;
+    text-decoration: underline;
+    transition-duration: $transitionDuration;
+    transition-property: color;
+  }
+
+  .modal__button {
+    color: white;
+    padding: rem(19);
+    width: 100%;
+    background-color: var(--color-black);
+    border: none;
+  }
+}
+
+@include mobile {
+  .documents-modal {
+    .modal__content {
+      max-width: rem(320);
+      padding: rem(28) 1rem;
+    }
+
+    .modal__close {
+      top: rem(10);
+      right: rem(10);
+    }
+
+    .modal__title {
+      font-size: 1rem;
+    }
+
+    .modal__input {
+      padding: rem(12);
+      &::placeholder {
+        font-size: rem(14);
+      }
+    }
+
+    .modal__button {
+      font-size: rem(14);
+    }
+  }
+}
+
 @media (max-width: 767.98px),
   (max-width: 1023.98px) and (orientation: landscape) {
   .origins-modal {
@@ -174,12 +264,44 @@
   }
 }
 
+@media (max-width: 767.98px) and (orientation: landscape) {
+  .documents-modal {
+    .modal__title {
+      font-size: 1rem;
+      margin: 0 0 rem(24);
+    }
+  }
+}
+
 @include mouse-device {
   .modal__close {
     &:hover,
     &:focus {
       .modal__icon {
         fill: var(--color-green);
+      }
+    }
+  }
+
+  .documents-modal {
+    .modal__input {
+      &:hover,
+      &:focus {
+        border-color: var(--color-green);
+      }
+    }
+
+    .modal__link {
+      &:hover,
+      &:focus {
+        color: var(--color-green);
+      }
+    }
+
+    .modal__button {
+      &:hover,
+      &:focus {
+        background-color: var(--color-green);
       }
     }
   }
@@ -190,6 +312,26 @@
     &:active {
       .modal__icon {
         fill: var(--color-green);
+      }
+    }
+  }
+
+  .documents-modal {
+    .modal__input {
+      &:active {
+        border-color: var(--color-green);
+      }
+    }
+
+    .modal__link {
+      &:active {
+        color: var(--color-green);
+      }
+    }
+
+    .modal__button {
+      &:active {
+        background-color: var(--color-green);
       }
     }
   }

@@ -150,10 +150,11 @@ class ModalWithTrigger extends AModal {
     super({ selector, closeBtn, selectorActive, apiAnimation, apiBlockFocus });
 
     this._openBtn =
-      typeof openBtn === "string" ? document.querySelector(openBtn) : null;
+      typeof openBtn === "string" ? document.querySelectorAll(openBtn) : null;
   }
 
   _disabled = false;
+  _listFuncForOpen = new Set();
 
   init() {
     if (!this._openBtn) throw new Error("Invalid type passed");
@@ -162,22 +163,28 @@ class ModalWithTrigger extends AModal {
 
     super.init();
 
-    this._openBtn.addEventListener("click", (e) => {
-      if (this._disabled) return;
+    this._openBtn.forEach((btn) => {
+      btn.addEventListener("click", (e) => {
+        if (this._disabled) return;
 
-      this.toggleState();
+        this.toggleState();
 
-      this._toggleDisabledTrigger();
-    });
+        this._voidOpenFunc(e);
 
-    this._openBtn.addEventListener("keydown", (e) => {
-      if (e.code !== "Enter" && e.code !== "Space") return;
+        this._toggleDisabledTrigger();
+      });
 
-      if (this._disabled) return;
+      btn.addEventListener("keydown", (e) => {
+        if (e.code !== "Enter" && e.code !== "Space") return;
 
-      this.toggleState();
+        if (this._disabled) return;
 
-      this._toggleDisabledTrigger();
+        this.toggleState();
+
+        this._voidOpenFunc(e);
+
+        this._toggleDisabledTrigger();
+      });
     });
   }
 
@@ -189,6 +196,16 @@ class ModalWithTrigger extends AModal {
     }).then(() => {
       this._disabled = false;
     });
+  }
+
+  _voidOpenFunc(e) {
+    for (let func of this._listFuncForOpen) {
+      func(e);
+    }
+  }
+
+  eventOpen(func) {
+    this._listFuncForOpen.add(func);
   }
 }
 
