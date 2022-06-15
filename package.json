@@ -71,5 +71,8 @@
   "bugs": {
     "url": "https://github.com/Kirayoshikkage/uksteist/issues"
   },
-  "homepage": "https://github.com/Kirayoshikkage/uksteist#readme"
+  "homepage": "https://github.com/Kirayoshikkage/uksteist#readme",
+  "dependencies": {
+    "swiper": "^8.2.4"
+  }
 }

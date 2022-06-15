@@ -1,0 +1,169 @@
+.infrastructure {
+  min-height: 100vh;
+  padding: rem(96) 0;
+
+  .swiper-pagination {
+    top: 0;
+    left: 0;
+    text-align: start;
+    position: relative;
+    width: auto !important;
+    left: auto !important;
+    display: flex;
+    flex-wrap: wrap;
+    gap: rem(19) rem(30);
+    margin: 0 0 rem(104);
+  }
+
+  .swiper-pagination-bullet {
+    border-radius: 0;
+    width: auto;
+    height: auto;
+    color: var(--color-black);
+    opacity: 1;
+    font-size: rem(20);
+    font-weight: 300;
+    line-height: lh(24, 20);
+    background-color: transparent;
+    outline: none;
+    transition-duration: $transitionDuration;
+    transition-property: color, border-color;
+    border-bottom: rem(1) solid transparent;
+  }
+
+  .swiper-pagination-bullet-active {
+    color: var(--color-green);
+    background: transparent;
+  }
+
+  &__title {
+    margin: 0 0 rem(75);
+  }
+
+  .swiper-slide {
+    display: flex;
+    gap: rem(52);
+  }
+
+  &__item {
+    &_img {
+      border-radius: rem(15);
+      overflow: hidden;
+    }
+  }
+
+  &__img {
+    height: rem(410);
+  }
+
+  &__subtitle {
+    font-size: rem(24);
+    font-weight: 400;
+    line-height: lh(29, 24);
+    color: var(--color-black);
+    margin: 0 0 rem(8);
+  }
+
+  &__desc {
+    font-size: rem(18);
+    font-weight: 300;
+    line-height: lh(22, 18);
+    color: var(--color-black);
+    margin: 0;
+  }
+}
+
+@include tablet {
+  .infrastructure {
+    padding: rem(36) 0;
+
+    .swiper-pagination {
+      gap: 1rem;
+      margin: 0 0 rem(54);
+    }
+
+    &__item_img {
+      max-width: 60%;
+    }
+  }
+}
+
+@include small-tablet {
+  .infrastructure {
+    .swiper-pagination {
+      gap: rem(10) rem(18);
+    }
+
+    .swiper-pagination-bullet {
+      font-size: rem(14);
+    }
+
+    .swiper-slide {
+      flex-direction: column-reverse;
+      gap: rem(28);
+    }
+
+    &__item_img {
+      max-width: 100%;
+    }
+
+    &__img {
+      width: 100%;
+      height: rem(344);
+    }
+
+    &__title {
+      font-size: rem(24);
+      margin: 0 0 rem(25);
+    }
+
+    &__subtitle {
+      font-size: rem(22);
+    }
+
+    &__desc {
+      font-size: rem(16);
+    }
+  }
+}
+
+@media (orientation: landscape) and (max-width: 1023.98px) and (min-width: 768px) {
+  .infrastructure {
+    padding: rem(36) 0;
+
+    &__title {
+      font-size: rem(24);
+      margin: 0 0 rem(25);
+    }
+
+    .swiper-pagination-bullet {
+      font-size: rem(14);
+    }
+
+    &__img {
+      width: 100%;
+      height: rem(344);
+    }
+  }
+}
+
+@include mouse-device {
+  .infrastructure {
+    .swiper-pagination-bullet {
+      &:hover,
+      &:focus {
+        border-color: var(--color-green);
+      }
+    }
+  }
+}
+
+@include touch-device {
+  .infrastructure {
+    .swiper-pagination-bullet {
+      &:active {
+        border-color: var(--color-green);
+      }
+    }
+  }
+}

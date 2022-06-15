@@ -4,6 +4,7 @@ import { BurgerMenu } from "./components/BurgerMenu";
 import { BlockFocus } from "./components/BlockFocus";
 import { FadeAnimation } from "./components/FadeAnimation";
 import { ModalWithTrigger } from "./components/Modal";
+import { infrastructureSliders } from "./functions/sliders";
 
 let headerSelectLang = new SelectWithSingleChoice({
   selector: ".header__select-lang",
@@ -88,3 +89,5 @@ function init() {
     controls: [],
   });
 }
+
+infrastructureSliders();
