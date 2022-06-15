@@ -7,6 +7,11 @@
     <title>Document</title>
     <link rel="stylesheet" href="css/vendor.css" />
     <link rel="stylesheet" href="css/main.css" />
+    <script
+      defer
+      src="https://api-maps.yandex.ru/2.1/?apikey=ваш API-ключ&lang=ru_RU"
+      type="text/javascript"
+    ></script>
     <script defer src="js/main.js"></script>
   </head>
 
@@ -15,7 +20,8 @@
     <main>
       @include('./partials/hero.html') @include('./partials/place.html')
       @include('./partials/origins.html') @include('./partials/history.html')
-      @include('./partials/team.html') @include('./partials/stroll.html')
+      @include('./partials/team.html') @include('./partials/location.html')
+      @include('./partials/stroll.html')
       @include('./partials/personal-helper.html')
     </main>
   </body>
