@@ -205,6 +205,10 @@ class ModalWithTrigger extends AModal {
   }
 
   eventOpen(func) {
+    if (typeof func !== "function") {
+      throw new Error("Wrong type func");
+    }
+
     this._listFuncForOpen.add(func);
   }
 }

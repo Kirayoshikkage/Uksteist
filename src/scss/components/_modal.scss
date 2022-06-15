@@ -178,10 +178,8 @@
   }
 
   .modal__button {
-    color: white;
     padding: rem(19);
     width: 100%;
-    background-color: var(--color-black);
     border: none;
   }
 }
@@ -297,13 +295,6 @@
         color: var(--color-green);
       }
     }
-
-    .modal__button {
-      &:hover,
-      &:focus {
-        background-color: var(--color-green);
-      }
-    }
   }
 }
 
@@ -326,12 +317,6 @@
     .modal__link {
       &:active {
         color: var(--color-green);
-      }
-    }
-
-    .modal__button {
-      &:active {
-        background-color: var(--color-green);
       }
     }
   }
