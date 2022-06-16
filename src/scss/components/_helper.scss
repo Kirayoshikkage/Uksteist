@@ -1,0 +1,62 @@
+.helper {
+  &__text {
+    margin: 0;
+    color: var(--color-black);
+    font-size: rem(10);
+    line-height: lh(12, 10);
+
+    &_bold {
+      font-weight: 500;
+    }
+
+    &_max-width-160 {
+      max-width: rem(160);
+    }
+
+    &_mgb-8 {
+      margin-bottom: rem(8);
+    }
+
+    &_mgb-2 {
+      margin-bottom: rem(2);
+    }
+
+    &_color-white {
+      color: white;
+    }
+  }
+
+  &__phone {
+    margin: 0;
+    color: var(--color-black);
+    font-size: rem(10);
+    line-height: lh(12, 10);
+    outline: none;
+    transition-property: color, border-color;
+    transition-duration: $transitionDuration;
+    border-bottom: rem(1) solid transparent;
+
+    &_color-white {
+      color: white;
+    }
+  }
+}
+
+@include mouse-device {
+  .helper__phone {
+    &:hover,
+    &:focus {
+      color: var(--color-green);
+      border-color: var(--color-green);
+    }
+  }
+}
+
+@include touch-device {
+  .helper__phone {
+    &:active {
+      color: var(--color-green);
+      border-color: var(--color-green);
+    }
+  }
+}

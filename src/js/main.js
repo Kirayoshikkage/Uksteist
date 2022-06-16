@@ -4,49 +4,9 @@ import { BurgerMenu } from "./components/BurgerMenu";
 import { BlockFocus } from "./components/BlockFocus";
 import { FadeAnimation } from "./components/FadeAnimation";
 import { ModalWithTrigger } from "./components/Modal";
-import { infrastructureSliders } from "./functions/sliders";
+import { infrastructureSliders, descPlotSlider } from "./functions/sliders";
 
-let headerSelectLang = new SelectWithSingleChoice({
-  selector: ".header__select-lang",
-  initialValue: "ru",
-  apiAnimation: new AnimationHeight(),
-  output: 5,
-});
-
-headerSelectLang.init();
-
-let burgerMenu = new BurgerMenu({
-  selector: ".burger-menu",
-  trigger: ".burger-trigger",
-  selectorActive: "burger-menu_active",
-  triggerActive: "burger-trigger_active",
-  apiAnimation: new FadeAnimation({
-    display: "block",
-    duration: 400,
-  }),
-  apiBlockFocus: new BlockFocus({
-    exceptionContainer: ".burger-menu",
-    single: [document.querySelector(".burger-trigger")],
-  }),
-});
-
-burgerMenu.init();
-
-let originsModal = new ModalWithTrigger({
-  selector: ".origins .origins-modal",
-  openBtn: ".origins .origins__button",
-  closeBtn: ".origins .origins-modal .modal__close",
-  selectorActive: "modal_active",
-  apiAnimation: new FadeAnimation({
-    display: "flex",
-    duration: 400,
-  }),
-  apiBlockFocus: new BlockFocus({
-    exceptionContainer: ".origins .origins-modal",
-  }),
-});
-
-originsModal.init();
+let page = document.body.dataset.page;
 
 let documentsModal = new ModalWithTrigger({
   selector: ".documents .documents-modal",
@@ -81,13 +41,59 @@ documentForm.addEventListener("submit", (e) => {
   formData.append("document", e.target.dataset.document);
 });
 
-ymaps.ready(init);
-function init() {
-  var myMap = new ymaps.Map("map", {
-    center: [55.76, 37.64],
-    zoom: 7,
-    controls: [],
+if (page === "index") {
+  let headerSelectLang = new SelectWithSingleChoice({
+    selector: ".header__select-lang",
+    initialValue: "ru",
+    apiAnimation: new AnimationHeight(),
+    output: 5,
   });
-}
 
-infrastructureSliders();
+  headerSelectLang.init();
+
+  let burgerMenu = new BurgerMenu({
+    selector: ".burger-menu",
+    trigger: ".burger-trigger",
+    selectorActive: "burger-menu_active",
+    triggerActive: "burger-trigger_active",
+    apiAnimation: new FadeAnimation({
+      display: "block",
+      duration: 400,
+    }),
+    apiBlockFocus: new BlockFocus({
+      exceptionContainer: ".burger-menu",
+      single: [document.querySelector(".burger-trigger")],
+    }),
+  });
+
+  burgerMenu.init();
+
+  let originsModal = new ModalWithTrigger({
+    selector: ".origins .origins-modal",
+    openBtn: ".origins .origins__button",
+    closeBtn: ".origins .origins-modal .modal__close",
+    selectorActive: "modal_active",
+    apiAnimation: new FadeAnimation({
+      display: "flex",
+      duration: 400,
+    }),
+    apiBlockFocus: new BlockFocus({
+      exceptionContainer: ".origins .origins-modal",
+    }),
+  });
+
+  originsModal.init();
+
+  ymaps.ready(init);
+  function init() {
+    var myMap = new ymaps.Map("map", {
+      center: [55.76, 37.64],
+      zoom: 7,
+      controls: [],
+    });
+  }
+
+  infrastructureSliders();
+} else if (page === "plot") {
+  descPlotSlider();
+}

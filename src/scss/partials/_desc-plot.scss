@@ -1,0 +1,203 @@
+.desc-plot {
+  min-height: 100vh;
+  padding: rem(105) 0;
+  display: flex;
+  align-items: center;
+
+  .container {
+    width: 100%;
+  }
+
+  &__grid {
+    display: flex;
+    align-items: center;
+    gap: rem(51);
+  }
+
+  &__item_slider {
+    max-width: rem(676);
+  }
+
+  &__thumbs {
+    .swiper-wrapper {
+      justify-content: flex-start;
+    }
+
+    .swiper-slide {
+      max-width: rem(60);
+      transition-duration: $transitionDuration;
+      transition-property: opacity, transform;
+      cursor: pointer;
+    }
+
+    .swiper-slide-thumb-active {
+      opacity: 0.5;
+    }
+  }
+
+  &__title {
+    font-size: rem(22);
+    font-weight: 500;
+    line-height: lh(27, 22);
+    color: var(--color-black);
+    margin: 0 0 rem(4);
+  }
+
+  &__cadastral,
+  &__status,
+  &__booking {
+    font-size: rem(12);
+    font-weight: 500;
+    line-height: lh(15, 12);
+    color: var(--color-gray);
+    margin: 0 0 rem(5);
+  }
+
+  &__status {
+    margin: 0 0 rem(30);
+  }
+
+  &__characteristics {
+    font-size: rem(14);
+    font-weight: 700;
+    line-height: lh(22, 14);
+    color: var(--color-black);
+    margin: 0;
+  }
+
+  &__list {
+    margin-bottom: rem(30);
+  }
+
+  &__characteristic,
+  &__complete {
+    font-size: rem(12);
+    font-weight: 500;
+    line-height: lh(19, 12);
+    margin: 0;
+    color: var(--color-black);
+  }
+
+  &__price {
+    font-size: rem(18);
+    font-weight: 500;
+    line-height: lh(22, 18);
+    color: var(--color-black);
+    margin: 0;
+  }
+
+  &__complete {
+    margin: 0 0 rem(60);
+  }
+
+  &__booking {
+    margin: 0 0 rem(30);
+  }
+
+  &__button {
+    padding: rem(19.5) rem(37.5);
+  }
+}
+
+@include tablet {
+  .desc-plot {
+    &__grid {
+      gap: rem(24);
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+
+    &__item_slider {
+      max-width: rem(456);
+    }
+
+    &__complete {
+      margin: 0 0 rem(24);
+    }
+
+    &__booking {
+      margin: 0 0 rem(24);
+    }
+  }
+}
+
+@include small-tablet {
+  .desc-plot {
+    padding: rem(32) 0;
+
+    &__title {
+      font-size: 1rem;
+    }
+
+    &__cadastral,
+    &__status,
+    &__booking {
+      font-size: rem(10);
+    }
+
+    &__status {
+      margin: 0 0 1rem;
+    }
+
+    &__characteristics {
+      font-size: rem(12);
+    }
+
+    &__list {
+      margin-bottom: 1rem;
+    }
+
+    &__price {
+      font-size: 1rem;
+    }
+
+    &__button {
+      padding: rem(19.5) rem(37.5);
+    }
+
+    &__grid {
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    &__item_slider {
+      max-width: 100%;
+      text-align: center;
+    }
+
+    &__thumbs {
+      .swiper-wrapper {
+        justify-content: center;
+      }
+    }
+  }
+}
+
+@media (orientation: landscape) and (max-width: 1023.98px) and (min-width: 768px) {
+  .desc-plot {
+    padding: rem(32) 0;
+  }
+}
+
+@include mouse-device {
+  .desc-plot__thumbs {
+    .swiper-slide {
+      &:hover,
+      &:focus {
+        transform: scale(0.9);
+      }
+    }
+  }
+}
+
+@include touch-device {
+  .desc-plot__thumbs {
+    .swiper-slide {
+      &:active {
+        transform: scale(0.9);
+      }
+    }
+  }
+}

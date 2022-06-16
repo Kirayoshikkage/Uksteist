@@ -1,0 +1,57 @@
+.back {
+  padding: rem(22) 0;
+  background-color: var(--color-black);
+
+  &__link {
+    outline: none;
+    display: flex;
+    align-items: center;
+  }
+
+  &__text {
+    font-size: rem(12);
+    font-weight: 500;
+    line-height: lh(15, 12);
+    color: white;
+    transition-duration: $transitionDuration;
+    transition-property: color;
+  }
+
+  &__icon {
+    margin-right: rem(10);
+    fill: white;
+    width: rem(10);
+    height: rem(5);
+    transition-duration: $transitionDuration;
+    transition-property: fill;
+  }
+}
+
+@include mouse-device {
+  .back__link {
+    &:hover,
+    &:focus {
+      .back__text {
+        color: var(--color-green);
+      }
+
+      .back__icon {
+        fill: var(--color-green);
+      }
+    }
+  }
+}
+
+@include touch-device {
+  .back__link {
+    &:active {
+      .back__text {
+        color: var(--color-green);
+      }
+
+      .back__icon {
+        fill: var(--color-green);
+      }
+    }
+  }
+}
