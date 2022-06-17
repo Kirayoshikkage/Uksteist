@@ -5,6 +5,7 @@ import { BlockFocus } from "./components/BlockFocus";
 import { FadeAnimation } from "./components/FadeAnimation";
 import { ModalWithTrigger } from "./components/Modal";
 import { infrastructureSliders, descPlotSlider } from "./functions/sliders";
+import APlayer from "aplayer";
 
 let page = document.body.dataset.page;
 
@@ -96,4 +97,26 @@ if (page === "index") {
   infrastructureSliders();
 } else if (page === "plot") {
   descPlotSlider();
+
+  let player = new APlayer({
+      container: document.getElementById("next-steps__aplayer"),
+      theme: "#FADFA3",
+      audio: [
+        {
+          name: "Uksteist - звук тишины",
+          url: "../audio/jojo.mp3",
+          cover: "../img/music__cover.webp",
+          theme: "#314C51",
+        },
+      ],
+    }),
+    playerPic = document.querySelector(".next-steps__music .aplayer-pic");
+
+  playerPic.setAttribute("tabindex", 0);
+
+  playerPic.addEventListener("keydown", (e) => {
+    if (e.code === "Enter") {
+      player.toggle();
+    }
+  });
 }
