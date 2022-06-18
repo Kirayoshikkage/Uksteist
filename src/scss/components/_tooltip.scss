@@ -1,0 +1,128 @@
+.tooltip {
+  $size: 14;
+  position: relative;
+  width: rem($size);
+  height: rem($size);
+  z-index: 1;
+  cursor: pointer;
+  outline: none;
+
+  &__content {
+    border-radius: rem(5);
+    text-align: center;
+    width: rem(90);
+    position: absolute;
+    background-color: var(--color-black);
+    padding: rem(5);
+    font-size: rem(9);
+    line-height: lh($size, 9);
+    color: white;
+
+    &::before {
+      content: "";
+      position: absolute;
+      width: rem(17);
+      height: rem(8);
+      background: url(../img/tooltip_icon.svg) no-repeat;
+    }
+  }
+
+  &__content {
+    animation-duration: $transitionDuration;
+    animation-fill-mode: forwards;
+    &_top-center {
+      top: 0;
+      right: 50%;
+      animation-name: top-center;
+
+      @keyframes top-center {
+        from {
+          opacity: 0;
+          transform: translate(50%, calc(-100% + rem(-6)));
+        }
+        to {
+          opacity: 1;
+          transform: translate(50%, calc(-100% + rem(-$size)));
+        }
+      }
+
+      &::before {
+        right: 50%;
+        transform: translate(50%, 100%);
+        bottom: rem(1);
+      }
+    }
+
+    &_bottom-center {
+      bottom: 0;
+      right: 50%;
+
+      animation-name: bottom-center;
+
+      @keyframes bottom-center {
+        from {
+          opacity: 0;
+          transform: translate(50%, calc(100% + rem(6)));
+        }
+        to {
+          opacity: 1;
+          transform: translate(50%, calc(100% + rem($size)));
+        }
+      }
+
+      &::before {
+        right: 50%;
+        transform: translate(50%, -100%) rotate(180deg);
+        top: rem(1);
+      }
+    }
+
+    &_right-center {
+      left: 100%;
+      top: 50%;
+
+      animation-name: right-center;
+
+      @keyframes right-center {
+        from {
+          opacity: 0;
+          transform: translate(rem(6), -50%);
+        }
+        to {
+          opacity: 1;
+          transform: translate(rem($size), -50%);
+        }
+      }
+
+      &::before {
+        top: 50%;
+        left: rem(-12);
+        transform: translate(0, -50%) rotate(90deg);
+      }
+    }
+
+    &_left-center {
+      right: 100%;
+      top: 50%;
+
+      animation-name: left-center;
+
+      @keyframes left-center {
+        from {
+          opacity: 0;
+          transform: translate(rem(-6), -50%);
+        }
+        to {
+          opacity: 1;
+          transform: translate(rem(-$size), -50%);
+        }
+      }
+
+      &::before {
+        right: 0;
+        transform: translate(rem($size - 2), -50%) rotate(-90deg);
+        top: 50%;
+      }
+    }
+  }
+}

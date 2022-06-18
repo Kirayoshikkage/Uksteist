@@ -1,0 +1,258 @@
+.stages {
+  padding: rem(120) 0;
+  display: flex;
+  align-items: center;
+
+  .container {
+    width: 100%;
+  }
+
+  &__desc {
+    font-size: rem(22);
+    font-weight: 500;
+    line-height: lh(34, 22);
+    margin: 0 0 rem(102);
+    color: var(--color-black);
+  }
+
+  &__list {
+    display: flex;
+    counter-reset: stage;
+    position: relative;
+    max-width: rem(1160);
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: rem(19);
+      left: 0;
+      width: calc(100% - 25%);
+      border: rem(1) solid #c4c4c4;
+      z-index: -1;
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: rem(19);
+      left: 0;
+      width: calc(60% - 25%);
+      border: rem(1) solid var(--color-black);
+      z-index: -1;
+    }
+  }
+
+  &__stage {
+    flex: 1 1 rem(312);
+    position: relative;
+
+    &::before {
+      counter-increment: stage;
+      content: counter(stage);
+      position: relative;
+      border-radius: 100%;
+      width: rem(36);
+      height: rem(36);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: rem(14);
+      font-weight: 500;
+      line-height: lh(17, 14);
+      color: white;
+      z-index: 3;
+    }
+
+    &_complete::before {
+      background-color: var(--color-black);
+    }
+
+    &_in-progress::before {
+      background-color: var(--color-gray);
+    }
+  }
+
+  &__progress {
+    position: absolute;
+    top: rem(-49);
+    left: rem(-9);
+    margin: 0;
+    text-align: center;
+  }
+
+  &__term {
+    display: block;
+    font-size: rem(12);
+    font-weight: 500;
+    line-height: lh(15, 12);
+    color: var(--color-gray);
+    margin-bottom: rem(8);
+  }
+
+  &__percent {
+    font-size: rem(18);
+    font-weight: 500;
+    line-height: lh(22, 18);
+    color: var(--color-black);
+  }
+
+  &__text {
+    max-width: rem(209);
+    margin: rem(21) 0 0;
+    font-size: rem(18);
+    font-weight: 500;
+    line-height: lh(22, 18);
+  }
+
+  .intermediate-stages {
+    width: calc(100% - rem(36));
+    position: absolute;
+    left: rem(36);
+    display: flex;
+    justify-content: space-evenly;
+    top: rem(2);
+    transform: translateY(100%);
+
+    &__item {
+      width: rem(12);
+      height: rem(12);
+      position: relative;
+
+      &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: rem(12);
+        height: rem(12);
+        border-radius: 100%;
+        transition-duration: $transitionDuration;
+        transition-property: background;
+      }
+
+      &_complete::before {
+        background-color: var(--color-black);
+      }
+
+      &_in-progress::before {
+        background-color: var(--color-gray);
+      }
+    }
+
+    &__text {
+      display: none;
+    }
+  }
+}
+
+@include tablet {
+  .stages {
+    &__text {
+      max-width: rem(125);
+      font-size: rem(14);
+    }
+  }
+}
+
+@include small-tablet {
+  .stages {
+    padding: rem(48) 0;
+
+    &__desc {
+      font-size: rem(18);
+      margin: 0 0 rem(81);
+    }
+
+    &__title {
+      font-size: rem(36);
+      margin: 0 0 rem(19);
+    }
+
+    &__list {
+      flex-direction: column;
+      padding: 0 rem(12);
+
+      &::before {
+        top: 0;
+        left: rem(29);
+        width: rem(2);
+        height: calc(100% - rem(92));
+      }
+
+      &::after {
+        top: 0;
+        left: rem(29);
+        width: rem(2);
+        height: calc(57% - rem(92));
+      }
+    }
+
+    &__stage {
+      flex: 1 1 rem(168);
+      display: flex;
+
+      &::before {
+        flex-shrink: 0;
+      }
+
+      &:last-child {
+        flex-basis: rem(92);
+      }
+    }
+
+    &__progress_last {
+      top: rem(49);
+    }
+
+    &__text {
+      max-width: rem(172);
+      font-size: 1rem;
+      margin: 0 0 0 rem(18);
+    }
+
+    .intermediate-stages {
+      width: 100%;
+      left: rem(12);
+      top: rem(36);
+      transform: translateY(0);
+      flex-direction: column;
+      height: calc(100% - rem(36));
+
+      &__item {
+        width: 100%;
+        display: flex;
+        align-items: center;
+      }
+
+      &__text {
+        display: block;
+        font-size: rem(10);
+        font-weight: 300;
+        line-height: lh(12, 10);
+        color: var(--color-black);
+        margin: 0 0 0 rem(24);
+      }
+    }
+  }
+}
+
+@media (orientation: landscape) and (max-width: 767.98px) {
+  .stages {
+    padding: 1rem 0;
+
+    &__desc {
+      margin: 0 0 rem(60);
+    }
+  }
+}
+
+@include mouse-device {
+  .intermediate-stages__item {
+    &:hover,
+    &:focus {
+      &::before {
+        background-color: var(--color-green);
+      }
+    }
+  }
+}

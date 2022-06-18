@@ -5,9 +5,14 @@ import { BlockFocus } from "./components/BlockFocus";
 import { FadeAnimation } from "./components/FadeAnimation";
 import { ModalWithTrigger } from "./components/Modal";
 import { infrastructureSliders, descPlotSlider } from "./functions/sliders";
+import { Tooltip } from "./components/Tooltip";
 import APlayer from "aplayer";
 
+// Определение страницы
+
 let page = document.body.dataset.page;
+
+// Модальное окно для секции документы
 
 let documentsModal = new ModalWithTrigger({
   selector: ".documents .documents-modal",
@@ -22,10 +27,13 @@ let documentsModal = new ModalWithTrigger({
     exceptionContainer: ".documents .documents-modal",
   }),
 });
-
 documentsModal.init();
 
+// Форма в модальном окне в секции документы
+
 let documentForm = document.querySelector(".documents .modal__form");
+
+// Подписка на событие открытия модального окна в секции документы
 
 documentsModal.eventOpen((e) => {
   let typeDocument = e.target.dataset.document;
@@ -35,6 +43,8 @@ documentsModal.eventOpen((e) => {
   documentForm.dataset.document = typeDocument;
 });
 
+// Отправка формы в модальном окне в секции документы
+
 documentForm.addEventListener("submit", (e) => {
   e.preventDefault();
 
@@ -42,7 +52,11 @@ documentForm.addEventListener("submit", (e) => {
   formData.append("document", e.target.dataset.document);
 });
 
+// Выполнение скрипта относительно страницы
+
 if (page === "index") {
+  // Выпадающее меню с выбором языка в секции хедер
+
   let headerSelectLang = new SelectWithSingleChoice({
     selector: ".header__select-lang",
     initialValue: "ru",
@@ -51,6 +65,8 @@ if (page === "index") {
   });
 
   headerSelectLang.init();
+
+  // Бургер меню
 
   let burgerMenu = new BurgerMenu({
     selector: ".burger-menu",
@@ -69,6 +85,8 @@ if (page === "index") {
 
   burgerMenu.init();
 
+  // Модальное окно в секции истоки
+
   let originsModal = new ModalWithTrigger({
     selector: ".origins .origins-modal",
     openBtn: ".origins .origins__button",
@@ -85,6 +103,8 @@ if (page === "index") {
 
   originsModal.init();
 
+  // Карта в секции место
+
   ymaps.ready(init);
   function init() {
     var myMap = new ymaps.Map("map", {
@@ -94,9 +114,23 @@ if (page === "index") {
     });
   }
 
+  // Инициализация слайдера в секции инфраструктура
+
   infrastructureSliders();
+
+  // Тултипы в секции этапы
+
+  let tooltips = new Tooltip({
+    selectors: ".tooltip",
+  });
+
+  tooltips.init();
 } else if (page === "plot") {
+  // Инициализация слайдера в секции описания участка
+
   descPlotSlider();
+
+  // Инициализация музыки в секции следующие шаги
 
   let player = new APlayer({
       container: document.getElementById("next-steps__aplayer"),
@@ -112,7 +146,11 @@ if (page === "index") {
     }),
     playerPic = document.querySelector(".next-steps__music .aplayer-pic");
 
+  // Добавление фокуса иконке
+
   playerPic.setAttribute("tabindex", 0);
+
+  // Подписка на событие нажатия enter для иконки
 
   playerPic.addEventListener("keydown", (e) => {
     if (e.code === "Enter") {
