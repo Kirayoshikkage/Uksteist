@@ -1,0 +1,29 @@
+.background-video {
+  position: relative;
+
+  &__video {
+    z-index: 1;
+    top: 0;
+    left: 0;
+    width: 99%;
+    height: 100%;
+    position: absolute;
+    object-fit: cover;
+  }
+
+  &__number {
+    user-select: none;
+    z-index: 2;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: #fff;
+    width: 100%;
+    height: 100%;
+    mix-blend-mode: screen;
+    margin: 0;
+    font-size: rem(600);
+    line-height: 0.675;
+    font-weight: 900;
+  }
+}

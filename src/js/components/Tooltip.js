@@ -35,7 +35,7 @@ class Tooltip {
     },
   };
 
-  _listAvailableDevices = ["desctop", "mobile", "all"];
+  _listAvailableDevices = ["desctop", "mobile", "all", "test"];
 
   _currentDevice;
 
@@ -314,7 +314,7 @@ class Tooltip {
   }
 
   getListAvailableDevices() {
-    return this._listAvailableDevices;
+    return this._listAvailableDevices.filter((item) => item !== "test");
   }
 
   addDevice(device, events) {

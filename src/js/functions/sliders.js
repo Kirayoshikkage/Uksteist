@@ -1,4 +1,4 @@
-import Swiper, { Navigation, Pagination, Thumbs, Keyboard, A11y } from "swiper";
+import Swiper, { Pagination, Thumbs, Keyboard, A11y } from "swiper";
 
 function infrastructureSliders() {
   var menu = [
@@ -35,7 +35,7 @@ function infrastructureSliders() {
 
 function descPlotSlider() {
   var swiper = new Swiper(".desc-plot__thumbs", {
-    modules: [Thumbs],
+    modules: [Thumbs, A11y],
     keyboard: {
       enabled: true,
     },
@@ -45,7 +45,7 @@ function descPlotSlider() {
   });
 
   var swiper2 = new Swiper(".desc-plot__slider", {
-    modules: [Thumbs],
+    modules: [Thumbs, A11y],
     thumbs: {
       swiper: swiper,
     },

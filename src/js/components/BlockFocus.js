@@ -34,11 +34,21 @@ class BlockFocus {
     BlockFocus._blocked = true;
   }
 
+  unblock() {
+    if (BlockFocus._blocked) {
+      this._unblockingElements();
+
+      BlockFocus._blocked = false;
+
+      return;
+    }
+  }
+
   _blockingElements() {
     if (this._caching) {
       if (BlockFocus._listBlockedElements.size) {
         for (let element of BlockFocus._listBlockedElements) {
-          element.setAttribute("tabIndex", -1);
+          element.setAttribute("tabindex", -1);
         }
 
         return;
@@ -47,7 +57,7 @@ class BlockFocus {
 
     document.querySelectorAll("*").forEach((element) => {
       if (this._iterateOverBlockingFunctions(element)) {
-        element.setAttribute("tabIndex", -1);
+        element.setAttribute("tabindex", -1);
 
         BlockFocus._listBlockedElements.add(element);
       }
@@ -56,7 +66,7 @@ class BlockFocus {
 
   _unblockingElements() {
     for (let element of BlockFocus._listBlockedElements) {
-      element.setAttribute("tabIndex", 0);
+      element.setAttribute("tabindex", 0);
     }
   }
 

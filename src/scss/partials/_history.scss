@@ -6,6 +6,9 @@
 
   .container {
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
   }
 
   &__part {
@@ -31,7 +34,8 @@
   }
 
   &__button {
-    display: block;
+    align-self: flex-end;
+    display: inline-block;
     padding: rem(23.5) rem(40);
     margin-left: auto;
   }

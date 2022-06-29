@@ -10,7 +10,6 @@
     <script
       defer
       src="https://api-maps.yandex.ru/2.1/?apikey=ваш API-ключ&lang=ru_RU"
-      type="text/javascript"
     ></script>
     <script defer src="js/main.js"></script>
   </head>
@@ -18,8 +17,9 @@
   <body data-page="index">
     @include('./partials/header.html')
     <main>
-      @include('./partials/hero.html') @include('./partials/place.html')
-      @include('./partials/origins.html') @include('./partials/history.html')
+      @include('./partials/hero.html') @include('./partials/plots.html')
+      @include('./partials/place.html') @include('./partials/origins.html')
+      @include('./partials/history.html')
       @include('./partials/infrastructure.html')
       @include('./partials/stages.html') @include('./partials/team.html')
       @include('./partials/documents.html') @include('./partials/location.html')

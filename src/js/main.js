@@ -6,7 +6,9 @@ import { FadeAnimation } from "./components/FadeAnimation";
 import { ModalWithTrigger } from "./components/Modal";
 import { infrastructureSliders, descPlotSlider } from "./functions/sliders";
 import { Tooltip } from "./components/Tooltip";
+import { Plots } from "./components/Plots";
 import APlayer from "aplayer";
+import { smoothScroll } from "./functions/smoothScroll";
 
 // Определение страницы
 
@@ -52,6 +54,10 @@ documentForm.addEventListener("submit", (e) => {
   formData.append("document", e.target.dataset.document);
 });
 
+// Плавная прокрутка с якорю
+
+smoothScroll("smooth-scroll");
+
 // Выполнение скрипта относительно страницы
 
 if (page === "index") {
@@ -84,6 +90,17 @@ if (page === "index") {
   });
 
   burgerMenu.init();
+
+  // Участки
+
+  let plots = new Plots({
+    container: ".plots",
+    blockFocus: new BlockFocus({
+      exceptionContainer: ".plots__plots-popup",
+    }),
+  });
+
+  plots.init();
 
   // Модальное окно в секции истоки
 

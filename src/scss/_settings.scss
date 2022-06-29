@@ -84,3 +84,9 @@ a {
 }
 
 $transitionDuration: 0.4s;
+
+@media (min-width: 2048px) {
+  :root {
+    font-size: 1.5rem;
+  }
+}

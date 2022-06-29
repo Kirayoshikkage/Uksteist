@@ -1,0 +1,273 @@
+.plots {
+  position: relative;
+  @include image-set("../img/plots__bg_desctop");
+  background-repeat: no-repeat;
+  background-position: bottom center;
+  background-size: cover;
+  min-height: max(rem(2400), 250vh);
+  padding: rem(48) 0;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    @include image-set("../img/plots__clouds_desctop");
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: top center;
+    pointer-events: none;
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(rem(368), 1fr));
+    gap: rem(48);
+  }
+
+  &__item {
+    padding-top: rem(76);
+    position: relative;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: rem(65);
+      height: rem(47);
+      background-repeat: no-repeat;
+    }
+
+    &_forest::before {
+      background-image: url("../img/plots__forest-icon.svg");
+    }
+
+    &_sea::before {
+      background-image: url("../img/plots__sea-icon.svg");
+    }
+
+    &_air::before {
+      background-image: url("../img/plots__air-icon.svg");
+    }
+  }
+
+  &__subtitle {
+    font-size: rem(24);
+    font-weight: 400;
+    line-height: lh(29, 24);
+    color: var(--color-black);
+    margin: 0 0 rem(30);
+  }
+
+  &__desc {
+    font-size: rem(18);
+    font-weight: 400;
+    line-height: lh(22, 18);
+    color: var(--color-black);
+    margin: 0;
+  }
+
+  &__plots-location {
+    width: 100%;
+    height: max(rem(883), 92vh);
+    bottom: 6vh;
+    left: 0;
+    position: absolute;
+  }
+
+  .plots-popup {
+    &__item {
+      top: 50%;
+      left: 50%;
+      z-index: 10;
+      width: rem(247);
+      display: none;
+      position: fixed;
+    }
+
+    &__table {
+      tbody {
+        display: block;
+        height: rem(78);
+        overflow: auto;
+      }
+    }
+  }
+}
+
+.plots-location {
+  [data-open="true"] {
+    .plots-location__bg {
+      opacity: 0.5;
+    }
+  }
+
+  &__plot {
+    cursor: pointer;
+    outline: none;
+  }
+
+  &__bg {
+    opacity: 0.2;
+    transition-duration: $transitionDuration;
+    transition-property: opacity;
+  }
+}
+
+@include laptop {
+  .plots {
+    min-height: rem(1894);
+
+    &__plots-location {
+      height: rem(698);
+      bottom: rem(42);
+    }
+  }
+}
+
+@include tablet {
+  .plots {
+    &__grid {
+      grid-template-columns: repeat(auto-fit, minmax(rem(280), 1fr));
+      gap: rem(24);
+    }
+
+    &__subtitle {
+      font-size: rem(18);
+    }
+
+    &__desc {
+      font-size: rem(16);
+    }
+  }
+}
+
+@include small-tablet {
+  .plots {
+    min-height: rem(1204);
+    padding: rem(32) 0;
+
+    &::before {
+      @include image-set("../img/plots__clouds_mobile");
+    }
+
+    &__item {
+      padding-top: rem(42.5);
+      &::before {
+        width: rem(41);
+        height: rem(35);
+        background-size: contain;
+      }
+    }
+
+    &__grid {
+      grid-template-columns: repeat(auto-fit, minmax(rem(220), 1fr));
+      gap: rem(24);
+    }
+
+    &__plots-location {
+      height: rem(427);
+      left: 0;
+    }
+
+    &__title {
+      font-size: rem(36);
+      margin: 0 0 1rem;
+    }
+
+    &__subtitle {
+      font-size: 1rem;
+      margin: 0 0 rem(10);
+    }
+
+    &__desc {
+      font-size: rem(14);
+    }
+  }
+}
+
+@include mobile {
+  .plots {
+    .plots-popup {
+      &__item {
+        width: rem(147);
+      }
+
+      &__content {
+        padding-top: 1.5rem;
+      }
+
+      &__subtitle,
+      &__status {
+        font-size: rem(12);
+        text-align: center;
+      }
+
+      &__table {
+        margin: 0 0 1rem;
+        tbody {
+          height: rem(165);
+        }
+      }
+
+      &__cell {
+        display: block;
+        width: 100%;
+        text-align: center;
+      }
+
+      &__close {
+        left: 50%;
+        top: rem(5);
+        transform: translateX(-50%);
+      }
+    }
+  }
+}
+
+@media (max-width: 389.98px) {
+  .plots {
+    @include image-set("../img/plots__bg_mobile");
+    background-size: cover;
+
+    &__plots-location {
+      height: rem(364);
+    }
+  }
+}
+
+@media (orientation: landscape) and (max-width: 576px) {
+  .plots {
+    .plots-popup {
+      &__item {
+        width: rem(247);
+      }
+      &__subtitle,
+      &__status {
+        text-align: start;
+      }
+
+      &__table {
+        margin: 0 0 1rem;
+
+        tbody {
+          height: rem(78);
+        }
+      }
+
+      &__cell {
+        width: auto;
+        display: table-cell;
+        text-align: start;
+
+        &_value {
+          text-align: end;
+        }
+      }
+    }
+  }
+}

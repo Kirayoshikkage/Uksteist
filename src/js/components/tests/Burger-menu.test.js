@@ -4,7 +4,7 @@
 
 import { BurgerMenu } from "../BurgerMenu";
 
-describe("Проверка конструктора", () => {
+describe("Тестирование бургер меню", () => {
   beforeEach(() => {
     document.body.innerHTML = "";
 
@@ -24,81 +24,64 @@ describe("Проверка конструктора", () => {
     document.body.insertAdjacentHTML("beforeend", trigger);
   });
 
-  it("Переданы данные в неверном формате", () => {
-    let sut = new BurgerMenu({
-      selector: {},
-      trigger: 1,
-      selectorActive: [],
-      triggerActive: {},
+  describe("Проверка конструктора", () => {
+    it("Переданы данные в неверном формате", () => {
+      let sut = new BurgerMenu({
+        selector: {},
+        trigger: 1,
+        selectorActive: [],
+        triggerActive: {},
+      });
+
+      expect(() => sut.init()).toThrow();
     });
 
-    expect(() => sut.init()).toThrow();
-  });
+    it("Данные не переданы", () => {
+      let sut = new BurgerMenu();
 
-  it("Данные не переданы", () => {
-    let sut = new BurgerMenu();
-
-    expect(() => sut.init()).toThrow();
-  });
-
-  it("Переданыe данные корректны", () => {
-    let sut = new BurgerMenu({
-      selector: ".burger-menu",
-      trigger: ".burger-trigger",
+      expect(() => sut.init()).toThrow();
     });
 
-    expect(() => sut.init()).not.toThrow();
-  });
-});
+    it("Переданыe данные корректны", () => {
+      let sut = new BurgerMenu({
+        selector: ".burger-menu",
+        trigger: ".burger-trigger",
+      });
 
-describe("Проверка состояния бургер меню", () => {
-  beforeEach(() => {
-    document.body.innerHTML = "";
-
-    let menu = `
-      <div class="burger-menu fade-animation">
-        <div class="burger-menu__body">
-          <div class="burger-menu__content">
-              Lorem
-          </div>
-        </div>
-      </div>;
-    `;
-
-    let trigger = '<button class="burger-trigger">Click</button>';
-
-    document.body.insertAdjacentHTML("beforeend", menu);
-    document.body.insertAdjacentHTML("beforeend", trigger);
-  });
-
-  it("Проверка состояния при открытом меню", () => {
-    let sut = new BurgerMenu({
-      selector: ".burger-menu",
-      trigger: ".burger-trigger",
-      selectorActive: "burger-menu_active",
-      triggerActive: "burger-trigger_active",
+      expect(() => sut.init()).not.toThrow();
     });
-    sut.init();
-    sut.toggleState();
-
-    let rezult = sut.isOpen();
-
-    expect(rezult).toBeTruthy();
   });
 
-  it("Проверка состояния при закрытом меню", () => {
-    let sut = new BurgerMenu({
-      selector: ".burger-menu",
-      trigger: ".burger-trigger",
-      selectorActive: "burger-menu_active",
-      triggerActive: "burger-trigger_active",
+  describe("Проверка состояния бургер меню", () => {
+    it("Проверка состояния при открытом меню", () => {
+      let sut = new BurgerMenu({
+        selector: ".burger-menu",
+        trigger: ".burger-trigger",
+        selectorActive: "burger-menu_active",
+        triggerActive: "burger-trigger_active",
+      });
+      sut.init();
+      sut.toggleState();
+
+      let rezult = sut.isOpen();
+
+      expect(rezult).toBeTruthy();
     });
-    sut.init();
-    sut.toggleState();
-    sut.toggleState();
 
-    let rezult = sut.isOpen();
+    it("Проверка состояния при закрытом меню", () => {
+      let sut = new BurgerMenu({
+        selector: ".burger-menu",
+        trigger: ".burger-trigger",
+        selectorActive: "burger-menu_active",
+        triggerActive: "burger-trigger_active",
+      });
+      sut.init();
+      sut.toggleState();
+      sut.toggleState();
 
-    expect(rezult).toBeFalsy();
+      let rezult = sut.isOpen();
+
+      expect(rezult).toBeFalsy();
+    });
   });
 });
