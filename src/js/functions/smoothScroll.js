@@ -1,12 +1,16 @@
-function smoothScroll(selector) {
+function smoothScroll(selector = null) {
+  if (typeof selector !== 'string') throw new Error('Selector incorrect')
+
   const smoothLinks = document.querySelectorAll(selector);
 
-  smoothLinks.forEach((item) => {
+  smoothLinks?.forEach((item) => {
     item.addEventListener("click", scroll);
   });
 }
 
-function scroll(e) {
+function scroll(e = null) {
+  if (!e) return;
+
   e.preventDefault();
 
   const element = e.target;

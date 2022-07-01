@@ -1,0 +1,42 @@
+[data-page="404"] {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0 1rem;
+  gap: rem(64);
+
+  .background-video {
+    width: 100%;
+    height: auto;
+    min-height: rem(169);
+    max-width: rem(502);
+
+    &__number {
+      font-size: rem(240);
+    }
+  }
+
+  .text {
+    margin: 0;
+    font-weight: 300;
+    font-size: rem(18);
+    line-height: lh(22, 18);
+    text-align: center;
+  }
+}
+
+@include mobile {
+  [data-page="404"] {
+    gap: 1rem;
+
+    .background-video {
+      min-height: rem(95);
+      max-width: rem(290);
+
+      &__number {
+        font-size: rem(134);
+      }
+    }
+  }
+}
