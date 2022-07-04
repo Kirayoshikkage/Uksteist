@@ -101,11 +101,10 @@ class BurgerMenu {
   _toggleDisabledTrigger() {
     this._disabled = true;
 
-    let timer = new Promise((resolve) => {
-      setTimeout(() => resolve(), this._transitionDuration);
-    }).then(() => {
+    setTimeout(() => {
       this._disabled = false;
-    });
+    },
+    this._transitionDuration)
   }
 
   _show() {

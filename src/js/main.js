@@ -145,7 +145,7 @@ if (page === "index") {
 
     locationContainerMap.classList.add("location__item_loading");
 
-    loadScript("https://api-maps.yandex.r/2.1/?apikey=ваш API-ключ&lang=ru_RU")
+    loadScript("https://api-maps.yandex.ru/2.1/?apikey=ваш API-ключ&lang=ru_RU")
       .then(() => {
         ymaps.ready(init);
         function init() {
@@ -196,8 +196,8 @@ if (page === "index") {
       audio: [
         {
           name: "Uksteist - звук тишины",
-          url: "../audio/jojo.mp3",
-          cover: "../img/music__cover.webp",
+          url: "audio/jojo.mp3",
+          cover: "img/music__cover.webp",
           theme: "#314C51",
         },
       ],
