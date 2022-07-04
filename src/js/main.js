@@ -7,8 +7,9 @@ import { ModalWithTrigger } from "./components/Modal";
 import { infrastructureSliders, descPlotSlider } from "./functions/sliders";
 import { Tooltip } from "./components/Tooltip";
 import { Plots } from "./components/Plots";
-import APlayer from "aplayer";
+import APlayer from "./components/APlayer";
 import { smoothScroll } from "./functions/smoothScroll";
+import { loadScript } from "./functions/loadScript";
 
 // Определение страницы
 
@@ -122,13 +123,53 @@ if (page === "index") {
 
   // Карта в секции место
 
-  ymaps.ready(init);
-  function init() {
-    var myMap = new ymaps.Map("map", {
-      center: [55.76, 37.64],
-      zoom: 7,
-      controls: [],
-    });
+  const locationBtn = document.querySelector(".location__button");
+  const locationContainerMap = document.querySelector(".location__item_map");
+  let mapIsLoad = false,
+    blockLoad = false;
+
+  locationBtn.addEventListener("pointerdown", loadLocationMap);
+
+  locationBtn.addEventListener("keydown", (e) => {
+    if (e.code !== "Enter") return;
+
+    loadLocationMap();
+  });
+
+  function loadLocationMap() {
+    if (mapIsLoad) return;
+
+    if (blockLoad) return;
+
+    mapIsLoad = true;
+
+    locationContainerMap.classList.add("location__item_loading");
+
+    loadScript("https://api-maps.yandex.r/2.1/?apikey=ваш API-ключ&lang=ru_RU")
+      .then(() => {
+        ymaps.ready(init);
+        function init() {
+          var myMap = new ymaps.Map("map", {
+            center: [55.76, 37.64],
+            zoom: 7,
+            controls: [],
+          });
+
+          locationContainerMap.classList.remove("location__item_loading");
+        }
+      })
+      .catch(() => {
+        mapIsLoad = false;
+        blockLoad = true;
+
+        locationContainerMap.classList.remove("location__item_loading");
+        locationContainerMap.classList.add("location__item_error");
+
+        setTimeout(() => {
+          locationContainerMap.classList.remove("location__item_error");
+          blockLoad = false;
+        }, 2500);
+      });
   }
 
   // Инициализация слайдера в секции инфраструктура
