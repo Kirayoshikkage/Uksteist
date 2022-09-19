@@ -36,7 +36,7 @@
       position: absolute;
       top: rem(19);
       left: 0;
-      width: calc(60% - 25%);
+      width: calc(62.5% - 25%);
       border: rem(1) solid var(--color-black);
       z-index: -1;
     }
@@ -183,7 +183,7 @@
         top: 0;
         left: rem(29);
         width: rem(2);
-        height: calc(57% - rem(92));
+        height: calc(60% - rem(92));
       }
     }
 
@@ -222,6 +222,7 @@
         width: 100%;
         display: flex;
         align-items: center;
+        pointer-events: none;
       }
 
       &__text {
